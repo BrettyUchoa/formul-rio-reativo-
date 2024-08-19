@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label for="unidade">Unidade</label>
+  <select id="unidade" formControlName="unidade">
+    <option *ngFor="let unidade of unidades" [value]="unidade">{{ unidade }}</option>
+  </select>
+
+  <label for="superintendencia">Superintendência</label>
+  <select id="superintendencia" formControlName="superintendencia" [disabled]="filteredSuperintendencias.length === 0">
+    <option *ngFor="let sup of filteredSuperintendencias" [value]="sup">{{ sup }}</option>
+  </select>
+
+  <button type="submit">Salvar</button>
+</form>

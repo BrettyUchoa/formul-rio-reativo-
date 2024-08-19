@@ -1,6 +1,16 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app/app.component';
+import { ParametrosFormComponent } from './app/parametros-form/parametros-form.component';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+const routes = [
+  { path: '', component: ParametrosFormComponent }
+];
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideRouter(routes, withComponentInputBinding()),
+    ReactiveFormsModule
+  ]
+}).catch(err => console.error(err));
